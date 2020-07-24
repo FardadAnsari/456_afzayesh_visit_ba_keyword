@@ -37,52 +37,57 @@ def Weemarket_openbrowser(PROXY):
 count=0
 elf=True
 for ips in proxy_list:
-        
-        try:
-            s_1=random.randint(2,6)
-            sleep(s_1)
-            count=count+1
-            interact=Weemarket_openbrowser(ips)
-            interact.get("https:\\www.google.com")
-            sleep(s_1)
-            search_box = interact.find_element_by_name('q')
-            search_box.send_keys("Dragon Palace takeaway")
-            sleep(s_1)
-            search_box.send_keys(Keys.RETURN)
-            sleep(s_1)
-            
-            page_num=0
-            
-            while elf=True:
+    
+            try:
+                elf=True      
+                sleep(8)
+                count=count+1
+                interact=Weemarket_openbrowser()
+                interact.get("https:\\www.google.com")
+                sleep(10)
+                search_box = interact.find_element_by_name('q')
+                # Your interest keyword which is going to be search by google
+                search_box.send_keys("")
+                sleep(4)
+                search_box.send_keys(Keys.RETURN)
+                sleep(4)
+
                 
-                list_753=[]
-                Result_website=interact.find_elements_by_class_name('iUh30.tjvcx')
-                for webs in Result_website:
-                    if webs.text=="dragonpalace-takeaway.co.uk":
-                        list_753.append(webs)
-                    else:
-                        pass
-                page_num=page_num+1
+                page_num=1
                 
-                if len(list_753) != 0:
-                    list_753[0].click()
-                    sleep(4)
-                    #All operations related to the intended web address 
-                    interact.close()
-                    elf=False
-                else:
-                    page_num=interact.find_elements_by_class_name('SJajHc NVbCr')
-                    page_num[page_num].click()
-                    sleep(4)
+                while elf==True:
                     
-                        
-                     
-                        
+                    page_num=int(page_num)    
+                    list_753=[]
+                    Result_website=interact.find_elements_by_class_name('iUh30.bc.tjvcx')
+                    for webs in Result_website:
+                        # The intended website which you will click on it 
+                        if webs.text=="":
+                            list_753.append(webs)
+                        else:
+                            pass
+                    page_num=page_num+1
+                    
+                    if len(list_753) != 0:
+                        list_753[0].click()
+                        sleep(5)
+                        #All operations related to the intended web address 
+                        interact.quit()
+                        elf=False
+                    else:
+                        page_num=str(page_num)
+                        page_num_a=interact.find_element_by_link_text(page_num).click()
+                        sleep(4)
+                                        
+                            
+                         
+                            
 
-            print("I found the website")
-            sleep(60)
-            interact.close()
-            print(" Interaction number "+ str(count) +" was successful !")
+                print("I found the website")
+                sleep(4)
+                #interact.close()
+                print(" Interaction number "+ str(count) +" was successful !")
 
-        except:
-            print(" Interaction number "+ str(count) +" was Unsuccessful !")
+            except:
+                print(" Interaction number "+ str(count) +" was Unsuccessful !")
+                interact.quit()
